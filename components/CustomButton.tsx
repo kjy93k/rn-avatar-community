@@ -5,11 +5,11 @@ import { Pressable, PressableProps, StyleSheet } from "react-native";
 
 interface ButtonProps extends PressableProps {
   label: string;
-  size: "small" | "medium" | "large";
-  variant: "standard" | "outline" | "filled";
+  size?: "small" | "medium" | "large";
+  variant?: "standard" | "outline" | "filled";
 }
 
-const Button = ({
+const CustomButton = ({
   label,
   size = "large",
   variant = "filled",
@@ -72,4 +72,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Button;
+export default CustomButton;
