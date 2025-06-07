@@ -32,6 +32,14 @@ export default function AutoLayout() {
           headerBackButtonDisplayMode: "minimal",
         }}
       />
+      <Stack.Screen
+        name="signup"
+        options={{
+          title: "회원가입",
+          headerShown: true,
+          headerBackButtonDisplayMode: "minimal",
+        }}
+      />
     </Stack>
   );
 }
