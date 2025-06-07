@@ -3,6 +3,7 @@ import { Post } from "@/types";
 import { Ionicons, MaterialCommunityIcons, Octicons } from "@expo/vector-icons";
 import React, { useState } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
+import Profile from "../Profile";
 
 interface FeedItemProps {
   post: Post;
@@ -13,6 +14,12 @@ const FeedItem = ({ post }: FeedItemProps) => {
   return (
     <View style={styles.container}>
       <View style={styles.contentContainer}>
+        <Profile
+          imageUri={post.author.imageUri}
+          nickname={post.author.nickname}
+          createdAt={post.createdAt}
+          onPress={() => {}}
+        />
         <Text style={styles.title}>{post.title}</Text>
         <Text numberOfLines={3} style={styles.description}>
           {post.description}

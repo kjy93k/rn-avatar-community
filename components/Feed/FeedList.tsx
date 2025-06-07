@@ -15,7 +15,7 @@ const dummyData = [
     author: {
       id: 101,
       nickname: "개발자101",
-      imageUri: "https://example.com/avatar101.png",
+      imageUri: "",
     },
     imageUris: [
       { uri: "https://example.com/image1.jpg" },
