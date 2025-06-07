@@ -1,5 +1,6 @@
 import CustomButton from "@/components/CustomButton";
-import { Link, router } from "expo-router";
+import InputField from "@/components/InputField";
+import { Link } from "expo-router";
 import React from "react";
 import { Image, SafeAreaView, StyleSheet, View } from "react-native";
 
@@ -12,16 +13,15 @@ export default function AuthScreen() {
           style={styles.logo}
         />
       </View>
-      <View style={styles.buttonContainer}>
-        <CustomButton
-          label="이메일 로그인"
-          onPress={() => {
-            router.push("/auth/login");
-          }}
-        />
-        <Link href={"/auth/signup"} style={styles.signupText}>
-          이메일로 가입하기
-        </Link>
+      <View style={styles.loginContainer}>
+        <InputField label="Email" placeholder="이메일을 입력해주세요." />
+        <InputField label="Password" placeholder="비밀번호를 입력해주세요." />
+        <View style={styles.buttonContainer}>
+          <CustomButton label="로그인하기" onPress={() => {}} />
+          <Link href={"/auth/signup"} style={styles.signupText}>
+            이메일로 가입하기
+          </Link>
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   imageContainer: {
-    flex: 3,
+    flex: 1,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -40,13 +40,19 @@ const styles = StyleSheet.create({
     width: 112,
     height: 112,
   },
-  buttonContainer: {
-    flex: 1,
+
+  loginContainer: {
+    flex: 1.5,
     paddingHorizontal: 32,
+    gap: 16,
   },
+  buttonContainer: {
+    gap: 16,
+    marginTop: 10,
+  },
+
   signupText: {
     textAlign: "center",
     textDecorationLine: "underline",
-    marginTop: 20,
   },
 });
