@@ -1,7 +1,7 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
-    "lib": ["esnext"], // ✅ 덮어씌우기
+    "lib": ["esnext", "dom"],
     "jsx": "react-native",
     "strict": true,
     "paths": {
