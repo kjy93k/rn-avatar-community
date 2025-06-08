@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
   },
 
   loginContainer: {
-    flex: 1.5,
+    flex: 3,
     paddingHorizontal: 32,
     gap: 16,
   },

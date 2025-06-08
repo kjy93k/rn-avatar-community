@@ -16,6 +16,7 @@ export default function AutoLayout() {
           title: "로그인",
           headerShown: true,
           headerTitleAlign: "center",
+          headerBackButtonDisplayMode: "minimal",
           headerLeft: () => (
             <Link href={"/"} replace>
               <Foundation name="home" size={24} color="black" />
@@ -24,14 +25,6 @@ export default function AutoLayout() {
         }}
       />
 
-      <Stack.Screen
-        name="login"
-        options={{
-          title: "이메일 로그인",
-          headerShown: true,
-          headerBackButtonDisplayMode: "minimal",
-        }}
-      />
       <Stack.Screen
         name="signup"
         options={{
