@@ -1,6 +1,6 @@
+import { Profile } from "@/types";
 import { getSecureStore } from "@/utils/secureStore";
 import $axios from "./axios";
-import { Profile } from "@/types";
 
 interface RequesterUser {
   email: string;
@@ -9,19 +9,20 @@ interface RequesterUser {
 
 async function postSignup(body: RequesterUser): Promise<void> {
   const { data } = await $axios.post(`/auth/signup`, body);
+  console.log(data);
   return data;
 }
 
 async function postLogin(
   body: RequesterUser
 ): Promise<{ accessToken: string }> {
-  const { data } = await $axios.post(`//auth/signin`, body);
+  const { data } = await $axios.post(`/auth/signin`, body);
   return data;
 }
 
 async function getMe(): Promise<Profile> {
   const accessToken = await getSecureStore("accessToken");
-  const { data } = await $axios.get(`//auth/me`, {
+  const { data } = await $axios.get(`/auth/me`, {
     headers: {
       Authorization: `Bearer ${accessToken}`,
     },

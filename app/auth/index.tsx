@@ -1,4 +1,5 @@
 import CustomButton from "@/components/CustomButton";
+import useAuth from "@/hooks/queries/useAuth";
 import { Link } from "expo-router";
 import React from "react";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
@@ -12,6 +13,8 @@ type FormValues = {
 };
 
 export default function AuthScreen() {
+  const { loginMutation } = useAuth();
+
   const loginForm = useForm<FormValues>({
     defaultValues: {
       email: "",
@@ -20,7 +23,8 @@ export default function AuthScreen() {
   });
 
   const onSubmit: SubmitHandler<FormValues> = (formValues) => {
-    console.log("formValues", formValues);
+    const { email, password } = formValues;
+    loginMutation.mutate({ email, password });
   };
 
   return (
