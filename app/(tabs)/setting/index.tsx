@@ -2,7 +2,7 @@ import AuthRouter from "@/components/AuthRouter";
 import React from "react";
 import { SafeAreaView, StyleSheet, Text } from "react-native";
 
-export default function MyScreen() {
+export default function SettingScreen() {
   return (
     <AuthRouter>
       <SafeAreaView>
