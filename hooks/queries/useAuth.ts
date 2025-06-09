@@ -48,7 +48,18 @@ const useAuth = () => {
   const signupMutation = useSignup();
   const { data } = useGetMe();
 
-  return { loginMutation, signupMutation, auth: { id: data?.id || "" } };
+  const logout = () => {
+    removeHeader("Authorization");
+    deleteSecureStore("accessToken");
+    queryClient.resetQueries({ queryKey: ["auth"] });
+  };
+
+  return {
+    loginMutation,
+    signupMutation,
+    auth: { id: data?.id || "" },
+    logout,
+  };
 };
 
 export default useAuth;
