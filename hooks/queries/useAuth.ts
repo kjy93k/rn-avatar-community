@@ -57,7 +57,7 @@ const useAuth = () => {
   return {
     loginMutation,
     signupMutation,
-    auth: { id: data?.id || "" },
+    auth: { id: data?.id || "", nickname: data?.nickname || "" },
     logout,
   };
 };
