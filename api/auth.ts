@@ -9,7 +9,6 @@ interface RequesterUser {
 
 async function postSignup(body: RequesterUser): Promise<void> {
   const { data } = await $axios.post(`/auth/signup`, body);
-  console.log(data);
   return data;
 }
 

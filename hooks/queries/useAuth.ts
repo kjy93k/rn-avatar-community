@@ -1,5 +1,6 @@
 import { getMe, postLogin, postSignup } from "@/api/auth";
 import queryClient from "@/api/queryClient";
+import { queryKeys } from "@/constants";
 import { removeHeader, setHeader } from "@/utils/header";
 import {
   deleteSecureStore,
@@ -26,7 +27,7 @@ const useLogin = () => {
     onSuccess: async ({ accessToken }) => {
       setHeader("Authorization", `Bearer ${accessToken}`);
       await saveSecureStore("accessToken", accessToken);
-      queryClient.fetchQuery({ queryKey: ["auth", "getMe"] });
+      queryClient.fetchQuery({ queryKey: [queryKeys.AUTH, queryKeys.GET_ME] });
       router.replace("/");
     },
   });
@@ -35,7 +36,7 @@ const useLogin = () => {
 const useGetMe = () => {
   const { data, isSuccess, isError } = useQuery({
     queryFn: getMe,
-    queryKey: ["auth", "getMe"],
+    queryKey: [queryKeys.AUTH, queryKeys.GET_ME],
   });
 
   useEffect(() => {
@@ -65,7 +66,7 @@ const useAuth = () => {
   const logout = () => {
     removeHeader("Authorization");
     deleteSecureStore("accessToken");
-    queryClient.resetQueries({ queryKey: ["auth"] });
+    queryClient.resetQueries({ queryKey: [queryKeys.AUTH] });
   };
 
   return {
