@@ -32,13 +32,9 @@ const CustomButton = ({
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.ORANGE_600,
     borderRadius: 8,
     alignItems: "center",
     justifyContent: "center",
-    fontSize: 14,
-    fontWeight: "bold",
-    color: colors.ORANGE_600,
   },
   pressed: { opacity: 0.7 },
   small: {
@@ -57,8 +53,12 @@ const styles = StyleSheet.create({
     height: 44,
   },
   standard: {
+    width: "auto",
     height: "auto",
     padding: 0,
+    color: colors.ORANGE_600,
+    fontSize: 14,
+    fontWeight: "bold",
   },
   outline: {
     backgroundColor: colors.WHITE,
@@ -69,6 +69,8 @@ const styles = StyleSheet.create({
   filled: {
     backgroundColor: colors.ORANGE_600,
     color: colors.WHITE,
+    fontSize: 14,
+    fontWeight: "bold",
   },
 });
 

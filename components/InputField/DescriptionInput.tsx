@@ -3,13 +3,13 @@ import { Controller, useFormContext } from "react-hook-form";
 import { StyleSheet } from "react-native";
 import InputField from ".";
 
-interface ContentInputProps {}
+interface DescriptionInputProps {}
 
-const ContentInput = ({}: ContentInputProps) => {
+const DescriptionInput = ({}: DescriptionInputProps) => {
   const { control } = useFormContext();
   return (
     <Controller
-      name="content"
+      name="description"
       control={control}
       rules={{
         validate: (data: string) => {
@@ -36,4 +36,4 @@ const ContentInput = ({}: ContentInputProps) => {
 
 const styles = StyleSheet.create({});
 
-export default ContentInput;
+export default DescriptionInput;
