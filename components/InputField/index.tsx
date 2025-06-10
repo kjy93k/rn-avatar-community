@@ -16,7 +16,13 @@ interface InputFieldProps extends TextInputProps {
 }
 
 const InputField = (
-  { label, variant = "filled", error, rightChild, ...props }: InputFieldProps,
+  {
+    label,
+    variant = "filled",
+    error,
+    rightChild = null,
+    ...props
+  }: InputFieldProps,
   ref?: ForwardedRef<TextInput>
 ) => {
   return (
