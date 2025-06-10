@@ -1,30 +1,36 @@
 import CustomButton from "@/components/CustomButton";
 import DescriptionInput from "@/components/InputField/DescriptionInput";
 import TitleInput from "@/components/InputField/TitleInput";
-import useCreatePost from "@/hooks/queries/useCreatePost";
-import { CreatePostDto, ImageUri } from "@/types";
-import { useNavigation } from "expo-router";
+import useGetPost from "@/hooks/queries/useGetPost";
+import useUpdatePost from "@/hooks/queries/useUpdatePost";
+import { CreatePostDto } from "@/types";
+import { useLocalSearchParams, useNavigation } from "expo-router";
 import React, { useEffect } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { StyleSheet } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
-interface PostWriteScreenProps {}
-
-function PostWriteScreen({}: PostWriteScreenProps) {
+function PostUpdateScreen() {
+  const { id } = useLocalSearchParams();
+  const { data: post } = useGetPost(Number(id));
+  const updatePost = useUpdatePost();
   const navigation = useNavigation();
-  const createPost = useCreatePost();
-  const postForm = useForm<CreatePostDto>({
-    defaultValues: {
-      title: "",
-      description: "",
-      imageUris: [],
-    },
-  });
+
+  const postForm = useForm<CreatePostDto>();
 
   const onSubmit = (formValues: CreatePostDto) => {
-    createPost.mutate(formValues);
+    updatePost.mutate({ id: Number(id), body: formValues });
   };
+
+  useEffect(() => {
+    if (post) {
+      postForm.reset({
+        title: post?.title,
+        description: post?.description,
+        imageUris: post?.imageUris,
+      });
+    }
+  }, [post, postForm]);
 
   useEffect(() => {
     navigation.setOptions({
@@ -56,4 +62,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default PostWriteScreen;
+export default PostUpdateScreen;

@@ -1,6 +1,6 @@
 import { colors } from "@/constants";
 import { Feather } from "@expo/vector-icons";
-import { Link, Stack } from "expo-router";
+import { Link, router, Stack } from "expo-router";
 
 export default function PostLayout() {
   return (
@@ -21,6 +21,23 @@ export default function PostLayout() {
             <Link href={"/"} replace>
               <Feather name="arrow-left" size={24} color="black" />
             </Link>
+          ),
+        }}
+      />{" "}
+      <Stack.Screen
+        name="update/[id]"
+        options={{
+          title: "글수정",
+          headerShown: true,
+          headerTitleAlign: "center",
+          headerBackButtonDisplayMode: "minimal",
+          headerLeft: () => (
+            <Feather
+              name="arrow-left"
+              size={24}
+              color="black"
+              onPress={() => router.back()}
+            />
           ),
         }}
       />

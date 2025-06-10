@@ -1,10 +1,10 @@
-import { getPost } from "@/api/post";
+import { getPosts } from "@/api/post";
 import { queryKeys } from "@/constants";
 import { useInfiniteQuery } from "@tanstack/react-query";
 
 const useGetInfinityPosts = () => {
   return useInfiniteQuery({
-    queryFn: ({ pageParam }) => getPost(pageParam),
+    queryFn: ({ pageParam }) => getPosts(pageParam),
     queryKey: [queryKeys.POST, queryKeys.GET_POSTS],
     initialPageParam: 1,
     getNextPageParam: (lastPage, allPage) => {
