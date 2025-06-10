@@ -88,7 +88,7 @@ const FeedItem = ({ post, isDetail = false }: FeedItemProps) => {
             {post.likes.length || "좋아요"}
           </Text>
         </Pressable>
-        <Pressable style={styles.menu}>
+        <Pressable style={styles.menu} onPress={handlePressFeed}>
           <MaterialCommunityIcons
             name="comment-processing-outline"
             size={16}
