@@ -1,6 +1,7 @@
 import { colors } from "@/constants";
 import { Feather } from "@expo/vector-icons";
 import { Link, router, Stack } from "expo-router";
+import { Pressable } from "react-native";
 
 export default function PostLayout() {
   return (
@@ -23,7 +24,25 @@ export default function PostLayout() {
             </Link>
           ),
         }}
-      />{" "}
+      />
+      <Stack.Screen
+        name="[id]"
+        options={{
+          title: "",
+          headerShown: true,
+          headerTitleAlign: "center",
+          headerBackButtonDisplayMode: "minimal",
+          headerLeft: () => (
+            <Pressable
+              onPress={() =>
+                router.canGoBack() ? router.back() : router.replace("/")
+              }
+            >
+              <Feather name="arrow-left" size={24} color="black" />
+            </Pressable>
+          ),
+        }}
+      />
       <Stack.Screen
         name="update/[id]"
         options={{

@@ -1,14 +1,14 @@
-import AuthRouter from "@/components/AuthRouter";
+import AuthRoute from "@/components/AuthRoute";
 import React from "react";
 import { SafeAreaView, StyleSheet, Text } from "react-native";
 
 export default function MyScreen() {
   return (
-    <AuthRouter>
+    <AuthRoute>
       <SafeAreaView>
         <Text>내 프로필 스크린</Text>
       </SafeAreaView>
-    </AuthRouter>
+    </AuthRoute>
   );
 }
 

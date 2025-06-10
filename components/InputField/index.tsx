@@ -1,5 +1,5 @@
 import { colors } from "@/constants";
-import React, { ForwardedRef, forwardRef } from "react";
+import React, { ForwardedRef, forwardRef, ReactNode } from "react";
 import {
   StyleSheet,
   Text,
@@ -12,10 +12,11 @@ interface InputFieldProps extends TextInputProps {
   label?: string;
   variant?: "filled" | "standard" | "outline";
   error?: string;
+  rightChild?: ReactNode;
 }
 
 const InputField = (
-  { label, variant = "filled", error, ...props }: InputFieldProps,
+  { label, variant = "filled", error, rightChild, ...props }: InputFieldProps,
   ref?: ForwardedRef<TextInput>
 ) => {
   return (
@@ -38,6 +39,7 @@ const InputField = (
           style={styles.input}
           {...props}
         />
+        {rightChild}
       </View>
       {error && <Text style={styles.error}>{error}</Text>}
     </View>
