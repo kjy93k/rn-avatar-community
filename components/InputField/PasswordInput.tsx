@@ -30,6 +30,7 @@ const PasswordInput = ({
           submitBehavior={submitBehavior}
           onSubmitEditing={() => setFocus("passwordConfirm")}
           secureTextEntry
+          keyboardType="default"
         />
       )}
     />

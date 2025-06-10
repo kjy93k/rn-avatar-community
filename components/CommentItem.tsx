@@ -71,7 +71,7 @@ const CommentItem = ({
           <MaterialCommunityIcons
             name="arrow-right-bottom"
             size={24}
-            color={"black"}
+            color={colors.BLACK}
           />
         )}
         <Profile
@@ -84,7 +84,7 @@ const CommentItem = ({
               <Ionicons
                 name="ellipsis-vertical"
                 size={24}
-                color={"black"}
+                color={colors.BLACK}
                 onPress={handlePressOption}
               />
             )
