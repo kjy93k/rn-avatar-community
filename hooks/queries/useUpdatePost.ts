@@ -9,10 +9,10 @@ const useUpdatePost = () => {
     mutationFn: updatePost,
     onSuccess: (postId) => {
       queryClient.invalidateQueries({
-        queryKey: [queryKeys.POST, queryKeys.GET_POSTS, postId],
+        queryKey: [queryKeys.POST, queryKeys.GET_POST, postId],
       });
       queryClient.invalidateQueries({
-        queryKey: [queryKeys.POST, queryKeys.GET_POSTS],
+        queryKey: [queryKeys.POST, queryKeys.GET_POST],
       });
       router.back();
     },

@@ -56,11 +56,11 @@ const FeedItem = ({ post, isDetail = false }: FeedItemProps) => {
       router.push("/auth");
       return;
     }
-    // 피드에서도 좋아요가 가능하게 수정
-    // if (!isDetail) {
-    //   router.push(`/post/${post.id}`);
-    //   return;
-    // }
+
+    if (!isDetail) {
+      router.push(`/post/${post.id}`);
+      return;
+    }
     likePost.mutate(post.id);
   };
 

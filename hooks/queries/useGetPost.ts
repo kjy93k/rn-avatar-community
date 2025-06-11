@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 const useGetPost = (id: number) => {
   return useQuery({
     queryFn: () => getPost(Number(id)),
-    queryKey: [queryKeys.POST, queryKeys.GET_POSTS, id],
+    queryKey: [queryKeys.POST, queryKeys.GET_POST, id],
     enabled: Boolean(id),
   });
 };
