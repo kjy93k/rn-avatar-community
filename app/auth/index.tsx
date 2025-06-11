@@ -1,5 +1,6 @@
 import CustomButton from "@/components/CustomButton";
 import useAuth from "@/hooks/queries/useAuth";
+import usePushNotification from "@/hooks/usePushNotification";
 import { Link } from "expo-router";
 import React from "react";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
@@ -14,6 +15,8 @@ type FormValues = {
 
 export default function AuthScreen() {
   const { loginMutation } = useAuth();
+  const { expoPushToken } = usePushNotification();
+  console.log("expoPushToken", expoPushToken);
 
   const loginForm = useForm<FormValues>({
     defaultValues: {
@@ -24,7 +27,7 @@ export default function AuthScreen() {
 
   const onSubmit: SubmitHandler<FormValues> = (formValues) => {
     const { email, password } = formValues;
-    loginMutation.mutate({ email, password });
+    loginMutation.mutate({ ...formValues, expoPushToken });
   };
 
   return (

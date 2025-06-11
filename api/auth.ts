@@ -14,7 +14,7 @@ async function postSignup(body: RequesterUser): Promise<void> {
 }
 
 async function postLogin(
-  body: RequesterUser
+  body: RequesterUser & { expoPushToken?: string }
 ): Promise<{ accessToken: string }> {
   const { data } = await $axios.post(`/auth/signin`, body);
 
