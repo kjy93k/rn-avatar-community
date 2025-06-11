@@ -42,4 +42,17 @@ const createVote = async ({
   return data;
 };
 
-export { createPost, createVote, deletePost, getPost, getPosts, updatePost };
+const likePost = async (id: number): Promise<number> => {
+  const { data } = await $axios.post(`/likes/${id}`);
+
+  return data;
+};
+export {
+  createPost,
+  createVote,
+  deletePost,
+  getPost,
+  getPosts,
+  likePost,
+  updatePost,
+};

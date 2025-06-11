@@ -1,6 +1,7 @@
 import { colors } from "@/constants";
 import useAuth from "@/hooks/queries/useAuth";
 import useDeletePost from "@/hooks/queries/useDeletePost";
+import useLikePost from "@/hooks/queries/useLikePost";
 import { Post } from "@/types";
 import { useActionSheet } from "@expo/react-native-action-sheet";
 import { Ionicons, MaterialCommunityIcons, Octicons } from "@expo/vector-icons";
@@ -22,6 +23,7 @@ const FeedItem = ({ post, isDetail = false }: FeedItemProps) => {
   const isLike = likeUsers.includes(Number(auth.id));
   const { showActionSheetWithOptions } = useActionSheet();
   const deletePost = useDeletePost();
+  const likePost = useLikePost();
 
   const handlePressOption = () => {
     const options = ["삭제", "수정", "취소"];
@@ -47,6 +49,19 @@ const FeedItem = ({ post, isDetail = false }: FeedItemProps) => {
         }
       }
     );
+  };
+
+  const handlePressLike = () => {
+    if (!auth.id) {
+      router.push("/auth");
+      return;
+    }
+    // 피드에서도 좋아요가 가능하게 수정
+    // if (!isDetail) {
+    //   router.push(`/post/${post.id}`);
+    //   return;
+    // }
+    likePost.mutate(post.id);
   };
 
   const handlePressFeed = () => {
@@ -103,7 +118,7 @@ const FeedItem = ({ post, isDetail = false }: FeedItemProps) => {
         )}
       </View>
       <View style={styles.menuContainer}>
-        <Pressable style={styles.menu} onPress={() => {}}>
+        <Pressable style={styles.menu} onPress={handlePressLike}>
           <Octicons
             name={isLike ? "heart-fill" : "heart"}
             size={16}
@@ -121,7 +136,7 @@ const FeedItem = ({ post, isDetail = false }: FeedItemProps) => {
           />
           <Text>{post.commentCount || "댓글"}</Text>
         </Pressable>
-        <Pressable style={styles.menu}>
+        <Pressable style={styles.menu} onPress={handlePressFeed}>
           <Ionicons name="eye-outline" size={16} color={colors.BLACK} />
           <Text>{post.viewCount}</Text>
         </Pressable>
