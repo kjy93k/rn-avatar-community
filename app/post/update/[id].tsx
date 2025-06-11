@@ -10,15 +10,20 @@ import { FormProvider, useForm } from "react-hook-form";
 import { StyleSheet } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
+interface FormValue extends CreatePostDto {
+  isVoteOpen: boolean;
+  isVoteAttached: boolean;
+}
+
 function PostUpdateScreen() {
   const { id } = useLocalSearchParams();
   const { data: post } = useGetPost(Number(id));
   const updatePost = useUpdatePost();
   const navigation = useNavigation();
 
-  const postForm = useForm<CreatePostDto>();
+  const postForm = useForm<FormValue>();
 
-  const onSubmit = (formValues: CreatePostDto) => {
+  const onSubmit = (formValues: FormValue) => {
     updatePost.mutate({ id: Number(id), body: formValues });
   };
 
@@ -28,6 +33,7 @@ function PostUpdateScreen() {
         title: post?.title,
         description: post?.description,
         imageUris: post?.imageUris,
+        isVoteAttached: post?.hasVote,
       });
     }
   }, [post, postForm]);

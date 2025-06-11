@@ -1,5 +1,5 @@
 import $axios from "@/api/axios";
-import { CreatePostDto, Post } from "@/types";
+import { CreatePostDto, CreateVoteDto, Post, VoteOption } from "@/types";
 
 const createPost = async (body: CreatePostDto) => {
   const { data } = await $axios.post("/posts", body);
@@ -33,4 +33,13 @@ const updatePost = async ({ id, body }: RequestUpdatePost) => {
   return data;
 };
 
-export { createPost, deletePost, getPost, getPosts, updatePost };
+const createVote = async ({
+  postId,
+  voteOptionId,
+}: CreateVoteDto): Promise<{ postId: number; VoteOption: VoteOption }> => {
+  const { data } = await $axios.post(`/posts/${postId}/vote/${voteOptionId}`);
+
+  return data;
+};
+
+export { createPost, createVote, deletePost, getPost, getPosts, updatePost };

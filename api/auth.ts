@@ -9,6 +9,7 @@ interface RequesterUser {
 
 async function postSignup(body: RequesterUser): Promise<void> {
   const { data } = await $axios.post(`/auth/signup`, body);
+
   return data;
 }
 
@@ -16,6 +17,7 @@ async function postLogin(
   body: RequesterUser
 ): Promise<{ accessToken: string }> {
   const { data } = await $axios.post(`/auth/signin`, body);
+
   return data;
 }
 

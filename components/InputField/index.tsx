@@ -42,7 +42,7 @@ const InputField = (
           inputMode="email"
           autoCapitalize="none"
           autoCorrect
-          style={styles.input}
+          style={[styles.input, styles[`${variant}Text`]]}
           {...props}
         />
         {rightChild}
@@ -85,8 +85,24 @@ const styles = StyleSheet.create({
     height: 200,
   },
   filled: { backgroundColor: colors.Gray_100 },
-  standard: {},
-  outline: {},
+  standard: {
+    borderWidth: 1,
+    borderColor: colors.Gray_200,
+  },
+  outline: {
+    borderWidth: 1,
+    borderColor: colors.ORANGE_600,
+  },
+  filledText: {
+    color: colors.BLACK,
+  },
+  standardText: {
+    color: colors.BLACK,
+  },
+  outlineText: {
+    color: colors.ORANGE_600,
+    fontWeight: "bold",
+  },
 });
 
 export default forwardRef(InputField);

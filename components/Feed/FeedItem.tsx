@@ -9,6 +9,7 @@ import React from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import ImagePreviewList from "../ImagePreviewList";
 import Profile from "../Profile";
+import Vote from "../Vote";
 
 interface FeedItemProps {
   post: Post;
@@ -78,6 +79,28 @@ const FeedItem = ({ post, isDetail = false }: FeedItemProps) => {
           {post.description}
         </Text>
         <ImagePreviewList imageUris={post.imageUris} />
+        {!isDetail && post.hasVote && (
+          <View style={styles.voteContainer}>
+            <View style={styles.voteTextContainer}>
+              <MaterialCommunityIcons
+                name="vote"
+                size={24}
+                color={colors.ORANGE_600}
+              />
+              <Text style={styles.voteText}>투표</Text>
+            </View>
+            <Text style={styles.voteCountText}>
+              {post.voteCount}명 참여 중...
+            </Text>
+          </View>
+        )}
+        {isDetail && post.hasVote && (
+          <Vote
+            postId={post.id}
+            postVotes={post.votes ?? []}
+            voteCount={post.voteCount}
+          />
+        )}
       </View>
       <View style={styles.menuContainer}>
         <Pressable style={styles.menu} onPress={() => {}}>
@@ -113,15 +136,34 @@ const styles = StyleSheet.create({
   },
   contentContainer: { padding: 16 },
   title: {
-    margin: 8,
+    marginVertical: 8,
     fontSize: 18,
     color: colors.BLACK,
     fontWeight: 600,
   },
   description: {
-    margin: 14,
+    marginBottom: 14,
     fontSize: 16,
   },
+  voteContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginVertical: 14,
+    gap: 16,
+    borderWidth: 1,
+    borderRadius: 8,
+    borderColor: colors.ORANGE_600,
+    backgroundColor: colors.ORANGE_100,
+    paddingVertical: 10,
+    paddingHorizontal: 16,
+  },
+  voteTextContainer: {
+    gap: 6,
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  voteText: { fontSize: 14, fontWeight: "bold", color: colors.ORANGE_600 },
+  voteCountText: { fontSize: 14, fontWeight: "bold", color: colors.BLACK },
   menuContainer: {
     flexDirection: "row",
     alignItems: "center",

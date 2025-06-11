@@ -2,6 +2,8 @@ import CustomButton from "@/components/CustomButton";
 import ImagePreviewList from "@/components/ImagePreviewList";
 import DescriptionInput from "@/components/InputField/DescriptionInput";
 import TitleInput from "@/components/InputField/TitleInput";
+import VoteAttached from "@/components/VoteAttached";
+import VoteModal from "@/components/VoteModal";
 import useCreatePost from "@/hooks/queries/useCreatePost";
 import { CreatePostDto } from "@/types";
 import { useNavigation } from "expo-router";
@@ -11,20 +13,26 @@ import { StyleSheet } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import PostWriteFooter from "../../components/PostWriteFooter";
 
-interface PostWriteScreenProps {}
+interface FormValue extends CreatePostDto {
+  isVoteOpen: boolean;
+  isVoteAttached: boolean;
+}
 
-function PostWriteScreen({}: PostWriteScreenProps) {
+function PostWriteScreen() {
   const navigation = useNavigation();
   const createPost = useCreatePost();
-  const postForm = useForm<CreatePostDto>({
+  const postForm = useForm<FormValue>({
     defaultValues: {
       title: "",
       description: "",
       imageUris: [],
+      isVoteOpen: false,
+      isVoteAttached: false,
+      voteOptions: [{ displayPriority: 0, content: "" }],
     },
   });
 
-  const onSubmit = (formValues: CreatePostDto) => {
+  const onSubmit = (formValues: FormValue) => {
     createPost.mutate(formValues);
   };
 
@@ -46,9 +54,11 @@ function PostWriteScreen({}: PostWriteScreenProps) {
       <KeyboardAwareScrollView contentContainerStyle={styles.container}>
         <TitleInput />
         <DescriptionInput />
+        <VoteAttached />
         <ImagePreviewList imageUris={postForm.watch().imageUris} />
       </KeyboardAwareScrollView>
       <PostWriteFooter />
+      <VoteModal />
     </FormProvider>
   );
 }
