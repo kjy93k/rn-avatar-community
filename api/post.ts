@@ -16,6 +16,11 @@ const getMyPosts = async (page = 1): Promise<Post[]> => {
   return data;
 };
 
+const getUserPosts = async (id: number, page = 1): Promise<Post[]> => {
+  const { data } = await $axios.get(`/posts/user/${id}?page=${page}`);
+  return data;
+};
+
 const getLikedPosts = async (page = 1): Promise<Post[]> => {
   const { data } = await $axios.get(`/likes?page=${page}`);
   return data;
@@ -65,6 +70,7 @@ export {
   getMyPosts,
   getPost,
   getPosts,
+  getUserPosts,
   likePost,
   updatePost,
 };

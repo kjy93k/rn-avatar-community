@@ -23,6 +23,8 @@ const queryKeys = {
   GET_POSTS: "getPosts",
   GET_MY_POSTS: "getMyPosts",
   GET_LIKED_POSTS: "getLikedPosts",
+  GET_USER_POSTS: "getUserPosts",
+  GET_USER_PROFILE: "getUserProfile",
 };
 
 export { colors, queryKeys };
