@@ -8,7 +8,7 @@ const useDeleteComment = () => {
     mutationFn: deleteComment,
     onSuccess: (postId: number) => {
       queryClient.invalidateQueries({
-        queryKey: [queryKeys.POST, queryKeys.GET_POST, postId],
+        queryKey: [queryKeys.POST, queryKeys.GET_POSTS, postId],
       });
     },
   });

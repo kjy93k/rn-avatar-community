@@ -72,7 +72,18 @@ const useAuth = () => {
   return {
     loginMutation,
     signupMutation,
-    auth: { id: data?.id || "", nickname: data?.nickname || "" },
+    auth: {
+      id: data?.id || "",
+      nickname: data?.nickname || "",
+      imageUri: data?.imageUri || "",
+      introduce: data?.introduce || "",
+      hatId: data?.hatId || "",
+      handId: data?.handId || "",
+      skinId: data?.skinId || "",
+      topId: data?.topId || "",
+      bottomId: data?.bottomId || "",
+      faceId: data?.faceId || "",
+    },
     logout,
   };
 };

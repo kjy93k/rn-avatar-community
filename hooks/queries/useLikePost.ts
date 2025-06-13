@@ -10,7 +10,7 @@ const useLikePost = () => {
     mutationFn: likePost,
     onMutate: async (postId) => {
       await queryClient.cancelQueries({
-        queryKey: [queryKeys.POST, queryKeys.GET_POST, postId],
+        queryKey: [queryKeys.POST, queryKeys.GET_POSTS, postId],
       });
 
       const user = queryClient.getQueryData<Profile>([
@@ -20,7 +20,7 @@ const useLikePost = () => {
       const userId = Number(user?.id);
       const previousPost = queryClient.getQueryData<Post>([
         queryKeys.POST,
-        queryKeys.GET_POST,
+        queryKeys.GET_POSTS,
         postId,
       ]);
       const newPost = { ...previousPost };
@@ -34,7 +34,7 @@ const useLikePost = () => {
       }
 
       queryClient.setQueryData(
-        [queryKeys.POST, queryKeys.GET_POST, postId],
+        [queryKeys.POST, queryKeys.GET_POSTS, postId],
         newPost
       );
 
@@ -43,16 +43,16 @@ const useLikePost = () => {
 
     onError: (err, newPost, context) => {
       queryClient.setQueryData(
-        [queryKeys.POST, queryKeys.GET_POST, context?.previousPost?.id],
+        [queryKeys.POST, queryKeys.GET_POSTS, context?.previousPost?.id],
         context?.previousPost
       );
     },
     onSettled: (data, error, variables, context) => {
       queryClient.invalidateQueries({
-        queryKey: [queryKeys.POST, queryKeys.GET_POST, variables],
+        queryKey: [queryKeys.POST, queryKeys.GET_POSTS, variables],
       });
       queryClient.invalidateQueries({
-        queryKey: [queryKeys.POST, queryKeys.GET_POST],
+        queryKey: [queryKeys.POST, queryKeys.GET_POSTS],
       });
     },
   });

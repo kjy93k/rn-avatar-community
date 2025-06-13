@@ -11,6 +11,16 @@ const getPosts = async (page = 1): Promise<Post[]> => {
   return data;
 };
 
+const getMyPosts = async (page = 1): Promise<Post[]> => {
+  const { data } = await $axios.get(`/posts/my?page=${page}`);
+  return data;
+};
+
+const getLikedPosts = async (page = 1): Promise<Post[]> => {
+  const { data } = await $axios.get(`/likes?page=${page}`);
+  return data;
+};
+
 const deletePost = async (id: number): Promise<number> => {
   const { data } = await $axios.delete(`/posts/${id}`);
 
@@ -51,6 +61,8 @@ export {
   createPost,
   createVote,
   deletePost,
+  getLikedPosts,
+  getMyPosts,
   getPost,
   getPosts,
   likePost,

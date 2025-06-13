@@ -8,7 +8,7 @@ const useDeletePost = () => {
     mutationFn: deletePost,
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: [queryKeys.POST, queryKeys.GET_POST],
+        queryKey: [queryKeys.POST, queryKeys.GET_POSTS],
       });
     },
   });

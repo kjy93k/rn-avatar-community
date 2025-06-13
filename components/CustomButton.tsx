@@ -1,18 +1,26 @@
 import { colors } from "@/constants";
 import { Text } from "@react-navigation/elements";
 import React from "react";
-import { Pressable, PressableProps, StyleSheet } from "react-native";
+import {
+  Pressable,
+  PressableProps,
+  StyleProp,
+  StyleSheet,
+  ViewStyle,
+} from "react-native";
 
 interface ButtonProps extends PressableProps {
   label: string;
   size?: "small" | "medium" | "large";
   variant?: "standard" | "outline" | "filled";
+  style?: StyleProp<ViewStyle>;
 }
 
 const CustomButton = ({
   label,
   size = "large",
   variant = "filled",
+  style = null,
   ...props
 }: ButtonProps) => {
   return (
@@ -23,6 +31,7 @@ const CustomButton = ({
         styles[variant],
         props.disabled && styles.disabled,
         pressed && styles.pressed,
+        style,
       ]}
       {...props}
     >
@@ -45,8 +54,8 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   medium: {
-    padding: 12,
-    width: 150,
+    paddingHorizontal: 12,
+    alignSelf: "center",
     height: 38,
   },
   large: {

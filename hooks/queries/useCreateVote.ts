@@ -8,7 +8,7 @@ const useCreateVote = () => {
     mutationFn: createVote,
     onSuccess: (data) => {
       queryClient.invalidateQueries({
-        queryKey: [queryKeys.POST, queryKeys.GET_POST, data.postId],
+        queryKey: [queryKeys.POST, queryKeys.GET_POSTS, data.postId],
       });
     },
   });
