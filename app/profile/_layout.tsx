@@ -26,6 +26,36 @@ export default function ProfileLayout() {
           ),
         }}
       />
+      <Stack.Screen
+        name="update"
+        options={{
+          headerShown: true,
+          headerTitle: "프로필 편집",
+          headerTitleAlign: "center",
+          headerBackButtonDisplayMode: "minimal",
+          headerShadowVisible: false,
+          headerLeft: () => (
+            <Pressable onPress={() => router.back()}>
+              <Feather name="arrow-left" size={24} color="black" />
+            </Pressable>
+          ),
+        }}
+      />{" "}
+      <Stack.Screen
+        name="avatar"
+        options={{
+          headerShown: true,
+          headerTitle: "",
+          headerTitleAlign: "center",
+          headerBackButtonDisplayMode: "minimal",
+          headerShadowVisible: false,
+          headerLeft: () => (
+            <Pressable onPress={() => router.back()}>
+              <Feather name="arrow-left" size={24} color="black" />
+            </Pressable>
+          ),
+        }}
+      />
     </Stack>
   );
 }

@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
   filledText: { color: colors.WHITE, fontSize: 14, fontWeight: "bold" },
   pressed: { opacity: 0.7 },
   disabled: {
-    backgroundColor: colors.Gray_300,
+    backgroundColor: colors.GRAY_300,
   },
 });
 

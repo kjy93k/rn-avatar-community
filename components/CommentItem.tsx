@@ -34,7 +34,7 @@ const CommentItem = ({
       return colors.ORANGE_100;
     }
     if (isReply) {
-      return colors.Gray_50;
+      return colors.GRAY_50;
     }
     return colors.WHITE;
   };
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.WHITE,
     padding: 16,
     gap: 12,
-    borderColor: colors.Gray_200,
+    borderColor: colors.GRAY_200,
     borderWidth: 1,
   },
   profileContainer: {

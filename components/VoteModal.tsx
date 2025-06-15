@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
   addVoteText: {
     fontSize: 14,
     fontWeight: "bold",
-    color: colors.Gray_500,
+    color: colors.GRAY_500,
     textAlign: "center",
   },
 });

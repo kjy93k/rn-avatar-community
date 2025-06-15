@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     borderTopWidth: StyleSheet.hairlineWidth,
-    borderTopColor: colors.Gray_300,
+    borderTopColor: colors.GRAY_300,
     paddingTop: 12,
     paddingHorizontal: 16,
     paddingBottom: 12,

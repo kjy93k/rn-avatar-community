@@ -38,7 +38,7 @@ const InputField = (
       >
         <TextInput
           ref={ref}
-          placeholderTextColor={colors.Gray_500}
+          placeholderTextColor={colors.GRAY_500}
           inputMode="email"
           autoCapitalize="none"
           autoCorrect
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 12,
-    color: colors.Gray_700,
+    color: colors.GRAY_700,
     marginBottom: 5,
   },
   input: {
@@ -84,10 +84,10 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     height: 200,
   },
-  filled: { backgroundColor: colors.Gray_100 },
+  filled: { backgroundColor: colors.GRAY_100 },
   standard: {
     borderWidth: 1,
-    borderColor: colors.Gray_200,
+    borderColor: colors.GRAY_200,
   },
   outline: {
     borderWidth: 1,

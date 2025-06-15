@@ -125,10 +125,10 @@ const styles = StyleSheet.create({
   },
   awareScrollViewContainer: {
     flex: 1,
-    backgroundColor: colors.Gray_200,
+    backgroundColor: colors.GRAY_200,
   },
   scrollViewContainer: {
-    backgroundColor: colors.Gray_200,
+    backgroundColor: colors.GRAY_200,
   },
   commentCount: {
     marginTop: 12,
@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
     padding: 16,
     backgroundColor: colors.WHITE,
     borderTopWidth: StyleSheet.hairlineWidth,
-    borderTopColor: colors.Gray_200,
+    borderTopColor: colors.GRAY_200,
     width: "100%",
   },
   inputButtonContainer: {

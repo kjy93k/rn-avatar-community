@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   notSelectedContainer: {
-    borderColor: colors.Gray_300,
+    borderColor: colors.GRAY_300,
   },
   selectedContainer: { borderColor: colors.ORANGE_600 },
   content: {

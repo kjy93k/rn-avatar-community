@@ -55,7 +55,7 @@ const UserFeedList = ({ userId }: UserFeedListProps) => {
 const styles = StyleSheet.create({
   contentContainer: {
     paddingVertical: 12,
-    backgroundColor: colors.Gray_200,
+    backgroundColor: colors.GRAY_200,
     gap: 12,
   },
   emptyContainer: {

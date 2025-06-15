@@ -185,7 +185,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-around",
-    borderTopColor: colors.Gray_300,
+    borderTopColor: colors.GRAY_300,
     borderTopWidth: StyleSheet.hairlineWidth,
   },
   menu: {
@@ -198,7 +198,7 @@ const styles = StyleSheet.create({
   },
   menuText: {
     fontSize: 14,
-    color: colors.Gray_700,
+    color: colors.GRAY_700,
   },
   activeMenuText: {
     fontWeight: 500,

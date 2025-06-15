@@ -37,4 +37,9 @@ async function getUserProfile(id: number): Promise<Profile> {
   return data;
 }
 
-export { getMe, getUserProfile, postLogin, postSignup };
+async function editProfile(body: Partial<Profile>): Promise<Profile> {
+  const { data } = await $axios.patch(`/auth/me`, body);
+  return data;
+}
+
+export { editProfile, getMe, getUserProfile, postLogin, postSignup };

@@ -1,9 +1,17 @@
+import { baseUrl } from "@/api/axios";
 import { colors } from "@/constants";
 import dayjs from "dayjs";
 import "dayjs/locale/ko";
 import relativeTime from "dayjs/plugin/relativeTime";
 import React, { ReactNode } from "react";
-import { Image, Pressable, StyleSheet, Text, View } from "react-native";
+import {
+  Image,
+  Platform,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 
 dayjs.extend(relativeTime);
 dayjs.locale("ko");
@@ -29,7 +37,13 @@ const Profile = ({
         <Image
           style={styles.avatar}
           source={
-            imageUri ? { uri: imageUri } : require("@/assets/images/avatar.png")
+            imageUri
+              ? {
+                  uri: `${
+                    Platform.OS === "ios" ? baseUrl.ios : baseUrl.android
+                  }/${imageUri}`,
+                }
+              : require("@/assets/images/avatar.png")
           }
         />
         <View style={{ gap: 4 }}>
@@ -59,14 +73,14 @@ const styles = StyleSheet.create({
     height: 50,
     borderRadius: 50,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: colors.Gray_300,
+    borderColor: colors.GRAY_300,
   },
   nickname: {
     fontSize: 15,
     fontWeight: "bold",
     color: colors.BLACK,
   },
-  createdAt: { fontSize: 14, color: colors.Gray_500 },
+  createdAt: { fontSize: 14, color: colors.GRAY_500 },
 });
 
 export default Profile;

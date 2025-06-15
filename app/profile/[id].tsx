@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     height: 154,
     borderRadius: 154,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: colors.Gray_500,
+    borderColor: colors.GRAY_500,
   },
   container: { marginTop: 77 },
   profile: { padding: 16, gap: 16 },

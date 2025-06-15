@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
   container: {
     marginTop: 16,
     borderWidth: 1,
-    borderColor: colors.Gray_300,
+    borderColor: colors.GRAY_300,
     borderRadius: 8,
     padding: 16,
     gap: 15,

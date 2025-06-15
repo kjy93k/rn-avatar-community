@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
   activeContainer: {
     borderBottomColor: colors.BLACK,
   },
-  text: { fontSize: 14, color: colors.Gray_500 },
+  text: { fontSize: 14, color: colors.GRAY_500 },
   activeText: {
     color: colors.BLACK,
     fontWeight: 700,
