@@ -8,15 +8,23 @@ import {
   saveSecureStore,
 } from "@/utils/secureStore";
 import { useMutation, useQuery } from "@tanstack/react-query";
+import { AxiosError } from "axios";
 import { router } from "expo-router";
 import { useEffect } from "react";
+import Toast from "react-native-toast-message";
+
+type ResponseError = AxiosError<{
+  statusCode: number;
+  message: string;
+  error: string;
+}>;
 
 const useSignup = () => {
   return useMutation({
     mutationFn: postSignup,
     onSuccess: () => router.replace("/auth"),
-    onError: () => {
-      console.log("err");
+    onError: (error: ResponseError) => {
+      Toast.show({ type: "error", text1: error.response?.data.message });
     },
   });
 };
@@ -29,6 +37,9 @@ const useLogin = () => {
       await saveSecureStore("accessToken", accessToken);
       queryClient.fetchQuery({ queryKey: [queryKeys.AUTH, queryKeys.GET_ME] });
       router.replace("/");
+    },
+    onError: (error: ResponseError) => {
+      Toast.show({ type: "error", text1: error.response?.data.message });
     },
   });
 };
