@@ -1,14 +1,19 @@
 import queryClient from "@/api/queryClient";
 import useAuth from "@/hooks/queries/useAuth";
 import useNotificationObserver from "@/hooks/useNotificationObserver";
+import { resources } from "@/i18n/resources";
+import { getSecureStore } from "@/utils/secureStore";
 import { useReactQueryDevTools } from "@dev-plugins/react-query";
 import { ActionSheetProvider } from "@expo/react-native-action-sheet";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { useFonts } from "expo-font";
+import { getLocales } from "expo-localization";
 import * as Notifications from "expo-notifications";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
+import i18n from "i18next";
 import { useEffect } from "react";
+import { initReactI18next, useTranslation } from "react-i18next";
 import "react-native-reanimated";
 import Toast from "react-native-toast-message";
 
@@ -21,6 +26,14 @@ Notifications.setNotificationHandler({
     shouldShowBanner: true,
     shouldShowList: true,
   }),
+});
+
+const deviceLanguage = getLocales()[0].languageCode ?? "ko";
+
+i18n.use(initReactI18next).init({
+  resources: resources,
+  lng: deviceLanguage,
+  fallbackLng: "ko-Kr",
 });
 
 export default function RootLayout() {
@@ -50,14 +63,24 @@ export default function RootLayout() {
 }
 
 function RootNavigator() {
+  const { t } = useTranslation();
   const { auth } = useAuth();
   useNotificationObserver();
+
+  useEffect(() => {
+    const loadLanguage = async () => {
+      const savedLanguage =
+        (await getSecureStore("language")) ?? deviceLanguage;
+      if (savedLanguage) i18n.changeLanguage(savedLanguage);
+    };
+    loadLanguage();
+  }, []);
 
   useEffect(() => {
     auth.id &&
       Toast.show({
         type: "success",
-        text1: `${auth.nickname || "회원"}님 환영합니다`,
+        text1: t("Welcome Message", { nickname: auth.nickname || "회원" }),
       });
   }, [auth.id]);
 
