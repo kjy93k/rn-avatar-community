@@ -1,5 +1,5 @@
 import { colors } from "@/constants";
-import useGetInfinityPosts from "@/hooks/queries/useGetInfinityPosts";
+import useGetInfinitePosts from "@/hooks/queries/useGetInfinitePosts";
 import { useScrollToTop } from "@react-navigation/native";
 import React, { useRef, useState } from "react";
 import { FlatList, StyleSheet } from "react-native";
@@ -12,7 +12,7 @@ const FeedList = () => {
     hasNextPage,
     isFetchingNextPage,
     refetch,
-  } = useGetInfinityPosts();
+  } = useGetInfinitePosts();
   const [isRefreshing, setIsRefreshing] = useState(false);
 
   const ref = useRef<FlatList | null>(null);

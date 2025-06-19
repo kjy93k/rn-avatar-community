@@ -2,7 +2,7 @@ import { getLikedPosts } from "@/api/post";
 import { queryKeys } from "@/constants";
 import { useInfiniteQuery } from "@tanstack/react-query";
 
-const useGetInfinityLikedPosts = () => {
+const useGetInfiniteLikedPosts = () => {
   return useInfiniteQuery({
     queryFn: ({ pageParam }) => getLikedPosts(pageParam),
     queryKey: [queryKeys.POST, queryKeys.GET_POSTS, queryKeys.GET_LIKED_POSTS],
@@ -14,4 +14,4 @@ const useGetInfinityLikedPosts = () => {
   });
 };
 
-export default useGetInfinityLikedPosts;
+export default useGetInfiniteLikedPosts;

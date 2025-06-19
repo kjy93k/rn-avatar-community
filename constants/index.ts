@@ -24,6 +24,7 @@ const queryKeys = {
   GET_MY_POSTS: "getMyPosts",
   GET_LIKED_POSTS: "getLikedPosts",
   GET_USER_POSTS: "getUserPosts",
+  GET_SEARCH_POSTS: "getSearchPosts",
   GET_USER_PROFILE: "getUserProfile",
   AVATAR: "avatar",
 };

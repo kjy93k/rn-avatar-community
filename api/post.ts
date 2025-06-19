@@ -26,6 +26,13 @@ const getLikedPosts = async (page = 1): Promise<Post[]> => {
   return data;
 };
 
+const getSearchPosts = async (page = 1, query: string): Promise<Post[]> => {
+  const { data } = await $axios.get(
+    `/posts/search?query=${query}&page=${page}`
+  );
+  return data;
+};
+
 const deletePost = async (id: number): Promise<number> => {
   const { data } = await $axios.delete(`/posts/${id}`);
 
@@ -70,6 +77,7 @@ export {
   getMyPosts,
   getPost,
   getPosts,
+  getSearchPosts,
   getUserPosts,
   likePost,
   updatePost,

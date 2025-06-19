@@ -1,5 +1,5 @@
 import { colors } from "@/constants";
-import useGetInfinityUserPosts from "@/hooks/queries/useGetInfinityUserPosts";
+import useGetInfiniteUserPosts from "@/hooks/queries/useGetInfiniteUserPosts";
 import { useScrollToTop } from "@react-navigation/native";
 import React, { useRef, useState } from "react";
 import { FlatList, StyleSheet, Text, View } from "react-native";
@@ -16,7 +16,7 @@ const UserFeedList = ({ userId }: UserFeedListProps) => {
     hasNextPage,
     isFetchingNextPage,
     refetch,
-  } = useGetInfinityUserPosts(userId);
+  } = useGetInfiniteUserPosts(userId);
   const [isRefreshing, setIsRefreshing] = useState(false);
 
   const ref = useRef<FlatList | null>(null);
